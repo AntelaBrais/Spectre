@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Title</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/uikit.min.css" />
+  <script src="js/uikit.min.js"></script>
+  <script src="js/uikit-icons.min.js"></script>
+</head>
+
+<body>
+
+  <div class="uk-section uk-section-primary" style="height: 100vh;">
+    <div uk-slider="" class="uk-slider uk-slider-container">
+
+      <div class="uk-position-relative uk-visible-toggle uk-light">
+
+        <ul class="uk-slider-items uk-child-width-1-2@s uk-child-width-1-4@m" style="transform: translate(-300px, 0px);">
+          <li class="">
+            <div>
+              <div class="uk-card uk-card-primary">
+                <div class="uk-card-body">
+                  <h3 class="uk-card-title">¿Cuántas pulsaciones has contado?</h3>
+                  <form>
+                    <input type="number" class="" id="numeroPulsaciones" placeholder="Número de pulsaciones" onchange="calcularFCBasal()">
+                  </form>
+                  <a id="resultadoFCB"></a>
+
+                </div>
+              </div>
+            </div>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+  </div>
+</body>
+<script type="text/javascript">
+function calcularFCBasal() {
+	var input;
+	input = document.getElementById("numeroPulsaciones").value;
+	input *= 4;
+	alert("Tu frecuencia cardíaca ha sido " + input + " pulsaciones.");
+
+	localStorage.setItem("fcBasal", input);
+	var resultadoFCB = localStorage.getItem("fcBasal");
+	document.getElementById("resultadoFCB").innerHTML =
+		"Tu frecuencia basal es de " + resultadoFCB + " latidos por minuto";
+}
+</script>
+
+</html>

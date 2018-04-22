@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Title</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/uikit.min.css" />
+  <script src="js/uikit.min.js"></script>
+  <script src="js/uikit-icons.min.js"></script>
+</head>
+
+<body>
+
+  <div id="main" class="uk-section uk-section-primary" style="height: 100vh;">
+    <div uk-slider="" class="uk-slider uk-slider-container">
+
+      <div class="uk-position-relative uk-visible-toggle uk-light">
+
+        <ul class="uk-slider-items uk-child-width-1-2@s uk-child-width-1-4@m" style="transform: translate(-300px, 0px);">
+          <li class="">
+            <div>
+              <div class="uk-card uk-card-primary" id="submain">
+                <div class="uk-card-body">
+                  <h3 class="uk-card-title" id="tituloActo">Detectar pulsación</h3>
+                  <h1 id="countdown">10</h1>
+
+
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="uk-active uk-transition-active">
+            <div>
+              <div class="uk-card uk-card-primary">
+                <div class="uk-card-body">
+                  <h3 class="uk-card-title">Detectar pulsación</h3>
+                  <p>¿Notas los latidos? Tendrás 3 segundos antes de que empiece la cuenta atrás en la que deberás contar el número de latidos. No te preocupes, cuando la pantalla esté de color ROJO no cuentes, cuando esté de color VERDE, será cuando puedas
+                    contar las pulsaciones.</p>
+                  <button class="uk-button uk-button-default" onclick="funcionEnlacePaginaCuentaAtras()">EMPEZAR</button>
+
+                </div>
+              </div>
+            </div>
+          </li>
+
+        </ul>
+
+      </div>
+
+      <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin">
+        <li uk-slider-item="0" class=""><a href="#"></a></li>
+        <li uk-slider-item="1" class="uk-active"><a href="#"></a></li>
+        <li uk-slider-item="2"><a href="#"></a></li>
+        <li uk-slider-item="3"><a href="#"></a></li>
+        <li uk-slider-item="4"><a href="#"></a></li>
+        <li uk-slider-item="5"><a href="#"></a></li>
+        <li uk-slider-item="6"><a href="#"></a></li>
+        <li uk-slider-item="7"><a href="#"></a></li>
+        <li uk-slider-item="8"><a href="#"></a></li>
+        <li uk-slider-item="9"><a href="#"></a></li>
+      </ul>
+
+    </div>
+  </div>
+</body>
+<script type="text/javascript">
+  // Total seconds to wait
+  var seconds = 6;
+  var subSeconds = 16;
+
+  function countdown() {
+    seconds = seconds - 1;
+    if (seconds <= 0) {
+      // Chnage your redirection link here
+      /* Empezar nueva cuenta atrás */
+      function subCountdown() {
+        subSeconds = subSeconds - 1;
+        if (subSeconds <= 0) {
+          // Chnage your redirection link here
+          /* Empezar nueva cuenta atrás */
+          window.location = "inputDatos.html";
+
+        } else {
+          document.getElementById('main').style.background = "green";
+          document.getElementById('submain').style.background = "green";
+          document.getElementById('tituloActo').innerHTML = "¡Ahora cuenta!";
+          // Update remaining seconds
+          document.getElementById("countdown").innerHTML = subSeconds;
+          // Count down using javascript
+          window.setTimeout("countdown()", 1000);
+        }
+      }
+      subCountdown();
+
+    } else {
+      document.getElementById('main').style.background = "red";
+      document.getElementById('submain').style.background = "red";
+      document.getElementById('tituloActo').innerHTML = "Todavía no ¡Prepárate!";
+      // Update remaining seconds
+      document.getElementById("countdown").innerHTML = seconds;
+      // Count down using javascript
+      window.setTimeout("countdown()", 1000);
+    }
+  }
+
+  // Run countdown function
+  countdown();
+</script>
+
+</html>
